@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
 
-  <!-- Background -->
-  <rect width="1024" height="1024" rx="224" ry="224" fill="#0E1A3A"/>
+  <!-- Background（角丸なし：Appleが自動適用するため不要） -->
+  <rect width="1024" height="1024" fill="#0E1A3A"/>
 
   <!--
     円弧 radius=220, stroke-width=45（細め）, gap=15° each side（広め）
