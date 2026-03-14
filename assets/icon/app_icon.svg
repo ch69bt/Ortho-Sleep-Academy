@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="224" ry="224" fill="#0E1A3A"/>
+
+  <!--
+    円弧 radius=220, stroke-width=45（細め）, gap=15° each side（広め）
+    内縁=197.5, 外縁=242.5
+    Arc 1 (top-right, #7ec8e3):  -75° to  -15°
+    Arc 2 (bottom-right, white):  15° to   75°
+    Arc 3 (bottom-left, white):  105° to  165°
+    Arc 4 (top-left, white):     195° to  255°
+
+    座標 (r=220, cx=cy=512):
+      -75°: (568.9, 299.5)  -15°: (724.5, 455.1)
+       15°: (724.5, 568.9)   75°: (568.9, 724.5)
+      105°: (455.1, 724.5)  165°: (299.5, 568.9)
+      195°: (299.5, 455.1)  255°: (455.1, 299.5)
+  -->
+
+  <!-- Arc 1: top-right / #7ec8e3 -->
+  <path d="M 568.9,299.5 A 220,220 0 0,1 724.5,455.1"
+        fill="none" stroke="#7ec8e3" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 2: bottom-right / white -->
+  <path d="M 724.5,568.9 A 220,220 0 0,1 568.9,724.5"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 3: bottom-left / white -->
+  <path d="M 455.1,724.5 A 220,220 0 0,1 299.5,568.9"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 4: top-left / white -->
+  <path d="M 299.5,455.1 A 220,220 0 0,1 455.1,299.5"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!--
+    8本の光線
+    弧外縁=242.5 → 線の内端=265、外端=430
+  -->
+  <g transform="translate(512,512)">
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(45)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(90)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(135)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(180)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(225)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(270)"/>
+    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(315)"/>
+  </g>
+
+  <!-- 中心：月アイコン -->
+  <circle cx="512" cy="512" r="135" fill="#7ec8e3"/>
+  <circle cx="460" cy="460" r="118" fill="#0E1A3A"/>
+
+</svg>
