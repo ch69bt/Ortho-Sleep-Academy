@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -200 1424 1424" width="1024" height="1024">
+
+  <!-- 背景なし（アダプティブアイコン前景用） -->
+  <!-- viewBoxを広げて約20%余白を確保 → 円クリップ内に収まるセーフゾーン対応 -->
+
+  <!-- Arc 1: top-right / #7ec8e3 -->
+  <path d="M 568.9,299.5 A 220,220 0 0,1 724.5,455.1"
+        fill="none" stroke="#7ec8e3" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 2: bottom-right / white -->
+  <path d="M 724.5,568.9 A 220,220 0 0,1 568.9,724.5"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 3: bottom-left / white -->
+  <path d="M 455.1,724.5 A 220,220 0 0,1 299.5,568.9"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- Arc 4: top-left / white -->
+  <path d="M 299.5,455.1 A 220,220 0 0,1 455.1,299.5"
+        fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
+
+  <!-- 16本の短い線（22.5°間隔） -->
+  <g transform="translate(512,512)">
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(22.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(45)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(67.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(90)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(112.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(135)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(157.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(180)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(202.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(225)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(247.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(270)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(292.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(315)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(337.5)"/>
+  </g>
+
+  <!-- 中心：月アイコン -->
+  <circle cx="512" cy="512" r="135" fill="#7ec8e3"/>
+  <circle cx="460" cy="460" r="118" fill="#0E1A3A"/>
+
+</svg>
