@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../services/settings_service.dart';
@@ -116,20 +117,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _sendFeedback() async {
-    final uri = Uri(
-      scheme: 'mailto',
-      path: 'support@example.com',
-      queryParameters: {
-        'subject': '[Ortho Luxmeter] フィードバック',
-        'body': 'バージョン: 1.0.0\n\n',
-      },
-    );
+    final Uri uri;
+    if (Platform.isIOS) {
+      // TODO: App Store Connect で確認した数字IDに差し替える
+      const appStoreId = '6760588609';
+      uri = Uri.parse(
+        'https://apps.apple.com/app/id$appStoreId?action=write-review',
+      );
+    } else {
+      const packageId = 'com.ortholutxmeter.orthoLuxmeter';
+      uri = Uri.parse(
+        'https://play.google.com/store/apps/details?id=$packageId&showAllReviews=true',
+      );
+    }
+
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('メールアプリを起動できませんでした')),
+          const SnackBar(content: Text('ストアを開けませんでした')),
         );
       }
     }

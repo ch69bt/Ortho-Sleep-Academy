@@ -21,17 +21,25 @@ class LuxFeedback {
     required this.gaugeColor,
   });
 
-  static LuxFeedback evaluate(double lux) {
+  static LuxFeedback evaluate(double lux, {int wakeHour = 7, int wakeMinute = 0}) {
     final now = DateTime.now();
     final hour = now.hour;
+    final currentMinutes = hour * 60 + now.minute;
+    final wakeMinutes = wakeHour * 60 + wakeMinute;
 
     final TimePeriod period;
-    if (hour < TimePeriodBoundary.morningEndHour) {
-      period = TimePeriod.morning;
-    } else if (hour < TimePeriodBoundary.afternoonEndHour) {
-      period = TimePeriod.afternoon;
-    } else {
+    if (hour >= TimePeriodBoundary.afternoonEndHour) {
+      // 18:00以降 → 夜
       period = TimePeriod.night;
+    } else if (currentMinutes < wakeMinutes) {
+      // 0:00〜起床時刻前（深夜〜早朝）→ 夜
+      period = TimePeriod.night;
+    } else if (hour < TimePeriodBoundary.morningEndHour) {
+      // 起床時刻〜11:59 → 朝
+      period = TimePeriod.morning;
+    } else {
+      // 12:00〜17:59 → 昼
+      period = TimePeriod.afternoon;
     }
 
     switch (period) {

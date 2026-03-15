@@ -5,8 +5,8 @@ import UIKit
 /// AVFoundationのカメラからISO・シャッタースピードを取得し、照度(lux)を算出するプラグイン
 ///
 /// 算出式:
-///   EV = log2(N² / t) + log2(ISO / 100)
-///   lux ≈ 2.5 × 2^EV
+///   EV100 = log2(N² / t) - log2(ISO / 100)  ≡  log2(100 × N² / (ISO × t))
+///   lux   ≈ 2.5 × 2^EV100
 ///
 /// N: Fナンバー（iPhoneの標準カメラ: f/1.8 ≒ 1.78）
 /// t: 露出時間（秒）
@@ -18,8 +18,6 @@ final class LuxMeasurementPlugin: NSObject, FlutterPlugin, FlutterStreamHandler 
     private static let methodChannelName = "com.ortholutxmeter/lux"
     private static let eventChannelName  = "com.ortholutxmeter/lux_stream"
 
-    /// iPhoneの標準広角カメラの代表的なFナンバー
-    private static let fNumber: Double = 1.78
     private static let maxLux: Double  = 300_000
     private static let minLux: Double  = 0
 
@@ -196,10 +194,11 @@ extension LuxMeasurementPlugin: AVCaptureVideoDataOutputSampleBufferDelegate {
         let iso = Double(device.iso)
         let exposureDuration = device.exposureDuration
         let t = CMTimeGetSeconds(exposureDuration)  // 露出時間（秒）
+        let n = Double(device.lensAperture)         // 実機のFナンバーを取得
 
-        guard t > 0, iso > 0 else { return }
+        guard t > 0, iso > 0, n > 0 else { return }
 
-        let lux = calculateLux(iso: iso, exposureTime: t)
+        let lux = calculateLux(iso: iso, exposureTime: t, fNumber: n)
 
         DispatchQueue.main.async { [weak self] in
             self?.eventSink?(lux)
@@ -208,10 +207,9 @@ extension LuxMeasurementPlugin: AVCaptureVideoDataOutputSampleBufferDelegate {
 
     /// ISO・露出時間・Fナンバーから照度(lux)を近似算出
     ///
-    /// EV100 = log2(N² / t) + log2(ISO / 100)
+    /// EV100 = log2(N² / t) - log2(ISO / 100)  ≡  log2(100 × N² / (ISO × t))
     /// lux   = 2.5 × 2^EV100
-    private func calculateLux(iso: Double, exposureTime t: Double) -> Double {
-        let n = LuxMeasurementPlugin.fNumber
+    private func calculateLux(iso: Double, exposureTime t: Double, fNumber n: Double) -> Double {
         let ev100 = log2((n * n) / t) - log2(iso / 100.0)
         let lux = 2.5 * pow(2.0, ev100)
         return min(max(lux, LuxMeasurementPlugin.minLux), LuxMeasurementPlugin.maxLux)

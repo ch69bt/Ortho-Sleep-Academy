@@ -8,6 +8,7 @@ import 'dart:io';
 
 import '../models/lux_feedback.dart';
 import '../services/lux_service.dart';
+import '../services/settings_service.dart';
 import '../widgets/time_period_label.dart';
 import '../widgets/lux_display.dart';
 import '../widgets/lux_gauge.dart';
@@ -27,10 +28,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final _luxService = LuxService();
   final _screenshotKey = GlobalKey();
+  final _shareButtonKey = GlobalKey();
   StreamSubscription<double>? _subscription;
 
   double _currentLux = 0;
   LuxFeedback _feedback = LuxFeedback.evaluate(0);
+  int _wakeHour = 7;
+  int _wakeMinute = 0;
 
   // 時間帯を定期的に再評価するタイマー
   Timer? _periodTimer;
@@ -38,15 +42,27 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    _loadSettings();
     _startMeasurement();
     // 1分ごとに時間帯を再評価
     _periodTimer = Timer.periodic(const Duration(minutes: 1), (_) {
       if (mounted) {
         setState(() {
-          _feedback = LuxFeedback.evaluate(_currentLux);
+          _feedback = LuxFeedback.evaluate(_currentLux, wakeHour: _wakeHour, wakeMinute: _wakeMinute);
         });
       }
     });
+  }
+
+  Future<void> _loadSettings() async {
+    final settings = await SettingsService.create();
+    if (mounted) {
+      setState(() {
+        _wakeHour = settings.wakeHour;
+        _wakeMinute = settings.wakeMinute;
+        _feedback = LuxFeedback.evaluate(_currentLux, wakeHour: _wakeHour, wakeMinute: _wakeMinute);
+      });
+    }
   }
 
   void _startMeasurement() {
@@ -55,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
       if (mounted) {
         setState(() {
           _currentLux = lux;
-          _feedback = LuxFeedback.evaluate(lux);
+          _feedback = LuxFeedback.evaluate(lux, wakeHour: _wakeHour, wakeMinute: _wakeMinute);
         });
       }
     });
@@ -70,10 +86,24 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> _share() async {
+    // ボタンの位置を非同期処理前に同期的に取得
+    final shareBox = _shareButtonKey.currentContext?.findRenderObject() as RenderBox?;
+    final shareOrigin = shareBox != null
+        ? shareBox.localToGlobal(Offset.zero) & shareBox.size
+        : Rect.fromLTWH(0, 400, 100, 50);
+
     try {
       final boundary = _screenshotKey.currentContext?.findRenderObject()
           as RenderRepaintBoundary?;
-      if (boundary == null) return;
+      if (boundary == null) {
+        debugPrint('Share error: RepaintBoundary not found');
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('シェアの準備ができていません。もう一度お試しください。')),
+          );
+        }
+        return;
+      }
 
       final image = await boundary.toImage(pixelRatio: 3.0);
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
@@ -87,9 +117,15 @@ class _MainScreenState extends State<MainScreen> {
       await Share.shareXFiles(
         [XFile(file.path)],
         text: '現在の照度：${_currentLux.toStringAsFixed(0)} lux【Ortho Luxmeter】',
+        sharePositionOrigin: shareOrigin,
       );
     } catch (e) {
       debugPrint('Share error: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('シェアに失敗しました: $e')),
+        );
+      }
     }
   }
 
@@ -104,11 +140,12 @@ class _MainScreenState extends State<MainScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings, color: AppColors.textSecondary),
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const SettingsScreen()),
               );
+              _loadSettings();
             },
           ),
         ],
@@ -157,6 +194,7 @@ class _MainScreenState extends State<MainScreen> {
 
                       // シェアボタン
                       OutlinedButton.icon(
+                        key: _shareButtonKey,
                         onPressed: _share,
                         icon: const Icon(
                           Icons.share,
