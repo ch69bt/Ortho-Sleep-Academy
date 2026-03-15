@@ -35,7 +35,7 @@ class LuxAdvice {
   static const String afternoonAdvice =
       '日中は自然光を積極的に取り入れましょう';
   static const String nightAdvice =
-      '就寝前は光を抑えてメラトニンの分泌を促しましょう';
+      '就寝前は光を抑えてメラトニンの分泌を止めないようにしましょう';
 
   // フィードバックテキスト
   static const String morningGood = '十分な光を浴びています';

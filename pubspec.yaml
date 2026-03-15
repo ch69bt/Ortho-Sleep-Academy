@@ -39,7 +39,7 @@ dependencies:
   # ローカル通知
   flutter_local_notifications: ^18.0.1
   timezone: ^0.10.1
-  flutter_timezone: ^2.0.0
+  flutter_timezone: ^5.0.1
 
   # 設定値の永続化
   shared_preferences: ^2.5.3
