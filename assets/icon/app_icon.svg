@@ -35,18 +35,26 @@
         fill="none" stroke="#FFFFFF" stroke-width="45" stroke-linecap="round"/>
 
   <!--
-    8本の光線
-    弧外縁=242.5 → 線の内端=265、外端=430
+    16本の短い線（22.5°間隔）
+    弧外縁=242.5 → 線の内端=275、外端=390
   -->
   <g transform="translate(512,512)">
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(45)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(90)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(135)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(180)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(225)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(270)"/>
-    <line x1="0" y1="-265" x2="0" y2="-430" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" transform="rotate(315)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(22.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(45)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(67.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(90)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(112.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(135)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(157.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(180)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(202.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(225)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(247.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(270)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(292.5)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(315)"/>
+    <line x1="0" y1="-300" x2="0" y2="-380" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" transform="rotate(337.5)"/>
   </g>
 
   <!-- 中心：月アイコン -->
