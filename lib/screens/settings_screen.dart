@@ -120,7 +120,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final Uri uri;
     if (Platform.isIOS) {
       // TODO: App Store Connect で確認した数字IDに差し替える
-      const appStoreId = '6760588609';
+      const appStoreId = '6760633019';
       uri = Uri.parse(
         'https://apps.apple.com/app/id$appStoreId?action=write-review',
       );
