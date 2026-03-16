@@ -56,7 +56,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>照度を計測するためにカメラを使用します。撮影・録画は行いません。</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-7430026135431315~6728502630</string>
+	<string>ca-app-pub-7430026135431315~4840039616</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

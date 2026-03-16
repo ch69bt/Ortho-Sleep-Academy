@@ -16,9 +16,9 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
 
   static String get _adUnitId {
     if (Platform.isIOS) {
-      return 'ca-app-pub-7430026135431315/6032201355';
+      return 'ca-app-pub-7430026135431315/9683104503';
     }
-    return 'ca-app-pub-7430026135431315/6971077613';
+    return 'ca-app-pub-7430026135431315/7300483745';
   }
 
   @override
