@@ -6,6 +6,7 @@ class SettingsService {
   static const _keySleepHour = 'sleep_hour';
   static const _keySleepMinute = 'sleep_minute';
   static const _keyNotificationsEnabled = 'notifications_enabled';
+  static const _keyIsPremium = 'is_premium';
 
   final SharedPreferences _prefs;
 
@@ -40,5 +41,13 @@ class SettingsService {
 
   Future<void> setNotificationsEnabled(bool enabled) async {
     await _prefs.setBool(_keyNotificationsEnabled, enabled);
+  }
+
+  // プレミアム（試験受験資格）
+  // TODO: 課金実装時は RevenueCat 等のレシート検証結果で setIsPremium を呼ぶ
+  bool get isPremium => _prefs.getBool(_keyIsPremium) ?? false;
+
+  Future<void> setIsPremium(bool value) async {
+    await _prefs.setBool(_keyIsPremium, value);
   }
 }

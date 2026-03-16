@@ -55,4 +55,17 @@ class AppTextStyles {
     color: AppColors.primary,
     letterSpacing: 0.5,
   );
+
+  static const TextStyle heading = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+  );
+
+  static const TextStyle body = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+    height: 1.6,
+  );
 }

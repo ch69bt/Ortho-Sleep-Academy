@@ -17,6 +17,7 @@ import '../widgets/ad_banner.dart';
 import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import 'settings_screen.dart';
+import 'exam_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -138,6 +139,16 @@ class _MainScreenState extends State<MainScreen> {
         elevation: 0,
         title: Text('ORTHO SLEEP ACADEMY', style: AppTextStyles.appBarTitle),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.school_outlined, color: AppColors.textSecondary),
+            tooltip: '睡眠健康チェック試験',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ExamScreen()),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.settings, color: AppColors.textSecondary),
             onPressed: () async {
