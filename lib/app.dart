@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'constants/colors.dart';
 import 'screens/main_screen.dart';
 
-class OrthoLuxmeterApp extends StatelessWidget {
-  const OrthoLuxmeterApp({super.key});
+class OrthoSleepAcademyApp extends StatelessWidget {
+  const OrthoSleepAcademyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class OrthoLuxmeterApp extends StatelessWidget {
     ));
 
     return MaterialApp(
-      title: 'Ortho Luxmeter',
+      title: 'ORTHO SLEEP ACADEMY',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.dark(

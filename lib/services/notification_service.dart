@@ -56,7 +56,7 @@ class NotificationService {
     await _plugin.cancel(_wakeNotificationId);
     await _plugin.zonedSchedule(
       _wakeNotificationId,
-      'Ortho Luxmeter',
+      'ORTHO SLEEP ACADEMY',
       '朝の光を浴びる時間ですよ',
       _nextInstanceOf(hour, minute),
       const NotificationDetails(
@@ -86,7 +86,7 @@ class NotificationService {
 
     await _plugin.zonedSchedule(
       _sleepNotificationId,
-      'Ortho Luxmeter',
+      'ORTHO SLEEP ACADEMY',
       'あと45分で就寝時間です。光を抑え、寝る準備をしましょう',
       _nextInstanceOf(notifyHour, notifyMinute),
       const NotificationDetails(

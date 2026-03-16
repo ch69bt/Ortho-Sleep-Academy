@@ -1,4 +1,4 @@
-package com.ortholutxmeter.ortho_luxmeter
+package com.orthosleepacademy.app
 
 import android.content.Context
 import android.hardware.Sensor

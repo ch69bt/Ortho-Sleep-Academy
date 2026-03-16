@@ -136,7 +136,7 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.background,
         elevation: 0,
-        title: Text('Ortho Luxmeter', style: AppTextStyles.appBarTitle),
+        title: Text('ORTHO SLEEP ACADEMY', style: AppTextStyles.appBarTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings, color: AppColors.textSecondary),

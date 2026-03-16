@@ -5,5 +5,5 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MobileAds.instance.initialize();
-  runApp(const OrthoLuxmeterApp());
+  runApp(const OrthoSleepAcademyApp());
 }

@@ -10,7 +10,7 @@
     <uses-feature android:name="android.hardware.sensor.light" android:required="false" />
 
     <application
-        android:label="Ortho Luxmeter"
+        android:label="ORTHO SLEEP ACADEMY"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

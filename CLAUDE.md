@@ -1,4 +1,4 @@
-# Ortho Luxmeter — CLAUDE.md
+# ORTHO SLEEP ACADEMY — CLAUDE.md
 
 > 睡眠の質改善をサポートするスマートフォン向け照度計アプリ
 > Flutter（iOS / Android）
@@ -9,11 +9,11 @@
 
 | 項目 | 内容 |
 |---|---|
-| アプリ名 | Ortho Luxmeter |
+| アプリ名 | ORTHO SLEEP ACADEMY |
 | 目的 | 起床時の日光浴・日中の光量確認・夜間の光量抑制を支援 |
 | プラットフォーム | iOS / Android |
 | 言語 | 日本語のみ |
-| Bundle ID | `com.ortholutxmeter.orthoLuxmeter` |
+| Bundle ID | `com.orthosleepacademy.app` |
 | バージョン | 1.0.0+2 |
 
 ---
@@ -118,7 +118,7 @@ t = 露出時間（秒）
 ### シェア機能
 - `RepaintBoundary` でメイン計測エリアをキャプチャ（pixelRatio: 3.0）
 - PNG として `getTemporaryDirectory()` に保存し `share_plus` で共有
-- テキスト: `「現在の照度：{lux} lux【Ortho Luxmeter】」`
+- テキスト: `「現在の照度：{lux} lux【ORTHO SLEEP ACADEMY】」`
 
 ### AdMob ID
 | | App ID | Ad Unit ID |
@@ -165,10 +165,10 @@ flutter clean && flutter pub get
 
 | 項目 | 内容 |
 |---|---|
-| Bundle ID | `com.ortholutxmeter.orthoLuxmeter` |
+| Bundle ID | `com.orthosleepacademy.app` |
 | App Store Connect | 登録済み（審査・TestFlight アップロード済み） |
 | App Store ID（iOS） | `6760588609` |
-| Android Application ID | `com.ortholutxmeter.ortho_luxmeter` |
+| Android Application ID | `com.orthosleepacademy.app` |
 | プライバシーポリシーURL | `https://ch69bt.github.io/Ortho-Luxmeter/privacy-policy.html` |
 | GitHub | `https://github.com/ch69bt/Ortho-Luxmeter` |
 
