@@ -203,7 +203,7 @@ flutter clean && flutter pub get
 | App Store ID（iOS） | `6760633019` |
 | Android Application ID | `com.orthosleepacademy.app` |
 | Google Play Console | 新規登録済み（内部テスト準備中） |
-| プライバシーポリシーURL | `https://ch69bt.github.io/Ortho-Luxmeter/privacy-policy.html` |
+| プライバシーポリシーURL | `https://ch69bt.github.io/Ortho-Sleep-Academy/privacy-policy.html` |
 | GitHub | `https://github.com/ch69bt/Ortho-Luxmeter` |
 
 ### Android 署名設定
