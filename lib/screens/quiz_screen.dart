@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/text_styles.dart';
@@ -14,14 +15,24 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  static const int _questionsPerSession = 5;
+
+  late final List<QuizQuestion> _sessionQuestions;
   int _currentIndex = 0;
   int? _selectedIndex;
   int _correctCount = 0;
   bool _answered = false;
 
-  QuizQuestion get _currentQuestion =>
-      widget.category.questions[_currentIndex];
-  int get _totalQuestions => widget.category.questions.length;
+  @override
+  void initState() {
+    super.initState();
+    final shuffled = List<QuizQuestion>.from(widget.category.questions)
+      ..shuffle(Random());
+    _sessionQuestions = shuffled.take(_questionsPerSession).toList();
+  }
+
+  QuizQuestion get _currentQuestion => _sessionQuestions[_currentIndex];
+  int get _totalQuestions => _sessionQuestions.length;
   bool get _isLastQuestion => _currentIndex == _totalQuestions - 1;
 
   void _onSelect(int index) {
