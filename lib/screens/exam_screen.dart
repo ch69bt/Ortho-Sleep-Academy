@@ -3,6 +3,7 @@ import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import '../models/quiz_data.dart';
 import '../services/settings_service.dart';
+import '../widgets/ad_banner.dart';
 import 'quiz_screen.dart';
 import 'main_exam_gate_screen.dart';
 
@@ -47,7 +48,12 @@ class _ExamScreenState extends State<ExamScreen> {
       ),
       body: !_initialized
           ? const Center(child: CircularProgressIndicator())
-          : _ExamContent(isPremium: _isPremium),
+          : Column(
+              children: [
+                Expanded(child: _ExamContent(isPremium: _isPremium)),
+                const AdBannerWidget(),
+              ],
+            ),
     );
   }
 }

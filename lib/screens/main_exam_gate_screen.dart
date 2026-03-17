@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import '../services/settings_service.dart';
+import '../widgets/ad_banner.dart';
 
 /// 本試験の課金ゲート画面
 class MainExamGateScreen extends StatefulWidget {
@@ -45,7 +46,16 @@ class _MainExamGateScreenState extends State<MainExamGateScreen> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: _isPremium ? const _MainExamContent() : _MainExamGate(onPurchase: _handlePurchase),
+      body: Column(
+        children: [
+          Expanded(
+            child: _isPremium
+                ? const _MainExamContent()
+                : _MainExamGate(onPurchase: _handlePurchase),
+          ),
+          const AdBannerWidget(),
+        ],
+      ),
     );
   }
 }
