@@ -69,8 +69,8 @@ class _MainExamGate extends StatelessWidget {
                 ClipOval(
                   child: Image.asset(
                     'assets/images/logo.png',
-                    width: 90,
-                    height: 90,
+                    width: 75,
+                    height: 75,
                     fit: BoxFit.cover,
                   ),
                 ),
