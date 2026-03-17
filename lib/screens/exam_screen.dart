@@ -219,7 +219,7 @@ class _QuizButton extends StatelessWidget {
               ),
             ),
           ),
-          Text('${category.questions.length}問', style: AppTextStyles.body),
+          Text('5問', style: AppTextStyles.body),
           const SizedBox(width: 6),
           const Icon(Icons.arrow_forward_ios,
               color: AppColors.textSecondary, size: 14),
