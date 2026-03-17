@@ -3,8 +3,8 @@ import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import '../models/quiz_data.dart';
 import '../services/settings_service.dart';
-import '../widgets/premium_gate.dart';
 import 'quiz_screen.dart';
+import 'main_exam_gate_screen.dart';
 
 class ExamScreen extends StatefulWidget {
   const ExamScreen({super.key});
@@ -33,13 +33,6 @@ class _ExamScreenState extends State<ExamScreen> {
     }
   }
 
-  /// TODO: 課金実装時に RevenueCat 等の購入処理に置き換える
-  Future<void> _handlePurchase() async {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('課金機能は準備中です')),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,15 +47,14 @@ class _ExamScreenState extends State<ExamScreen> {
       ),
       body: !_initialized
           ? const Center(child: CircularProgressIndicator())
-          : _isPremium
-              ? _ExamContent()
-              : PremiumGateWidget(onPurchase: _handlePurchase),
+          : _ExamContent(isPremium: _isPremium),
     );
   }
 }
 
 class _ExamContent extends StatelessWidget {
-  const _ExamContent();
+  final bool isPremium;
+  const _ExamContent({required this.isPremium});
 
   @override
   Widget build(BuildContext context) {
@@ -75,80 +67,79 @@ class _ExamContent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // シールドアイコン
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.surface,
-                  ),
-                  child: const Icon(
-                    Icons.shield_outlined,
-                    size: 44,
-                    color: AppColors.secondary,
-                  ),
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 140,
+                  height: 140,
+                  fit: BoxFit.contain,
                 ),
-                const SizedBox(height: 20),
-                // ORTHO SLEEP（白）
+                const SizedBox(height: 16),
                 RichText(
                   textAlign: TextAlign.center,
                   text: const TextSpan(
                     children: [
                       TextSpan(
-                        text: 'ORTHO SLEEP\n',
+                        text: 'ORTHO SLEEP',
                         style: TextStyle(
-                          fontSize: 32,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           letterSpacing: 2,
-                          height: 1.3,
                         ),
                       ),
-                      // ACADEMY（ライトブルー）
                       TextSpan(
-                        text: 'ACADEMY',
+                        text: '  ACADEMY',
                         style: TextStyle(
-                          fontSize: 32,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: AppColors.accent,
-                          letterSpacing: 4,
+                          letterSpacing: 2,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  '睡眠知識検定試験',
-                  style: AppTextStyles.body,
-                ),
+                const SizedBox(height: 6),
+                Text('睡眠知識検定', style: AppTextStyles.body),
               ],
             ),
           ),
         ),
 
-        // ── クイズボタンエリア ──
+        // ── ボタンエリア ──
         Expanded(
-          flex: 5,
+          flex: 6,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // 無料クイズセクション
                 Text(
-                  'カテゴリを選んでください',
+                  '無料クイズ',
                   style: AppTextStyles.body,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 12),
                 ...quizCategories.map(
                   (category) => Padding(
-                    padding: const EdgeInsets.only(bottom: 14),
-                    child: _QuizCategoryButton(category: category),
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: _QuizButton(category: category),
                   ),
                 ),
+
+                const SizedBox(height: 20),
+                const Divider(color: AppColors.surface, thickness: 1),
+                const SizedBox(height: 16),
+
+                // 本試験セクション（課金）
+                Text(
+                  '本試験',
+                  style: AppTextStyles.body,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 12),
+                _MainExamButton(isPremium: isPremium),
               ],
             ),
           ),
@@ -158,10 +149,9 @@ class _ExamContent extends StatelessWidget {
   }
 }
 
-class _QuizCategoryButton extends StatelessWidget {
+class _QuizButton extends StatelessWidget {
   final QuizCategory category;
-
-  const _QuizCategoryButton({required this.category});
+  const _QuizButton({required this.category});
 
   IconData get _icon {
     switch (category.title) {
@@ -182,16 +172,14 @@ class _QuizCategoryButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => QuizScreen(category: category),
-          ),
+          MaterialPageRoute(builder: (_) => QuizScreen(category: category)),
         );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.surface,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: const BorderSide(color: AppColors.secondary, width: 1),
@@ -199,25 +187,80 @@ class _QuizCategoryButton extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(_icon, color: AppColors.secondary, size: 24),
-          const SizedBox(width: 16),
+          Icon(_icon, color: AppColors.secondary, size: 22),
+          const SizedBox(width: 14),
           Expanded(
             child: Text(
               category.title,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary,
               ),
             ),
           ),
-          Text(
-            '${category.questions.length}問',
-            style: AppTextStyles.body,
-          ),
-          const SizedBox(width: 8),
+          Text('${category.questions.length}問', style: AppTextStyles.body),
+          const SizedBox(width: 6),
           const Icon(Icons.arrow_forward_ios,
-              color: AppColors.textSecondary, size: 16),
+              color: AppColors.textSecondary, size: 14),
+        ],
+      ),
+    );
+  }
+}
+
+class _MainExamButton extends StatelessWidget {
+  final bool isPremium;
+  const _MainExamButton({required this.isPremium});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const MainExamGateScreen()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: isPremium ? AppColors.secondary : AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: isPremium ? AppColors.secondary : AppColors.textSecondary,
+            width: 1,
+          ),
+        ),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            isPremium ? Icons.assignment : Icons.lock_outline,
+            color: isPremium ? Colors.white : AppColors.textSecondary,
+            size: 22,
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Text(
+              '睡眠知識検定 本試験',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: isPremium ? Colors.white : AppColors.textSecondary,
+              ),
+            ),
+          ),
+          if (!isPremium)
+            Text('受験資格が必要', style: AppTextStyles.disclaimer),
+          const SizedBox(width: 6),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: isPremium ? Colors.white : AppColors.textSecondary,
+            size: 14,
+          ),
         ],
       ),
     );
