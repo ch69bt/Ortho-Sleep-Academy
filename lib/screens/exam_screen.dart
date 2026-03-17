@@ -79,10 +79,10 @@ class _ExamContent extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 20),
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'ORTHO SLEEP',
                           style: TextStyle(
                             fontSize: 26,
@@ -91,7 +91,7 @@ class _ExamContent extends StatelessWidget {
                             letterSpacing: 2,
                           ),
                         ),
-                        const Text(
+                        Text(
                           'ACADEMY',
                           style: TextStyle(
                             fontSize: 26,
@@ -100,11 +100,20 @@ class _ExamContent extends StatelessWidget {
                             letterSpacing: 2,
                           ),
                         ),
-                        const SizedBox(height: 4),
-                        Text('睡眠知識検定', style: AppTextStyles.body),
                       ],
                     ),
                   ],
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  '睡眠知識検定',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                    letterSpacing: 0.5,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
