@@ -29,7 +29,7 @@ class _ExamScreenState extends State<ExamScreen> {
     if (mounted) {
       setState(() {
         _isPremium = settings.isPremium;
-        _initialized = true;
+        _initialized = false;
       });
     }
   }
