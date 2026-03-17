@@ -113,7 +113,7 @@ class _MainExamGate extends StatelessWidget {
             // 特典リスト
             _FeatureItem(icon: Icons.quiz, text: '全20問の本格試験'),
             _FeatureItem(icon: Icons.emoji_events, text: '合格でデジタルディプロマ発行'),
-            _FeatureItem(icon: Icons.replay, text: '何度でも再受験可能'),
+            _FeatureItem(icon: Icons.warning_amber_outlined, text: '不合格の場合は再購入が必要'),
 
             const SizedBox(height: 32),
 
@@ -135,7 +135,7 @@ class _MainExamGate extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Text('※ 購入後は何度でも受験できます', style: AppTextStyles.disclaimer),
+            Text('※ 不合格の場合は再度購入が必要です', style: AppTextStyles.disclaimer),
           ],
         ),
       ),
