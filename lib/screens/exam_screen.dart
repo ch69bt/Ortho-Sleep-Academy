@@ -67,11 +67,13 @@ class _ExamContent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: 140,
-                  height: 140,
-                  fit: BoxFit.contain,
+                ClipOval(
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 140,
+                    height: 140,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 RichText(
@@ -79,7 +81,7 @@ class _ExamContent extends StatelessWidget {
                   text: const TextSpan(
                     children: [
                       TextSpan(
-                        text: 'ORTHO SLEEP',
+                        text: 'ORTHO SLEEP ',
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -88,7 +90,7 @@ class _ExamContent extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: '  ACADEMY',
+                        text: 'ACADEMY',
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,

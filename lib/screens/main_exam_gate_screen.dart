@@ -63,14 +63,21 @@ class _MainExamGate extends StatelessWidget {
         child: Column(
           children: [
             // ロゴ + テキスト
-            Image.asset('assets/images/logo.png', width: 120, height: 120),
+            ClipOval(
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 120,
+                height: 120,
+                fit: BoxFit.cover,
+              ),
+            ),
             const SizedBox(height: 12),
             RichText(
               textAlign: TextAlign.center,
               text: const TextSpan(
                 children: [
                   TextSpan(
-                    text: 'ORTHO SLEEP',
+                    text: 'ORTHO SLEEP ',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -79,7 +86,7 @@ class _MainExamGate extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: '  ACADEMY',
+                    text: 'ACADEMY',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -176,7 +183,14 @@ class _MainExamContent extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 100, height: 100),
+            ClipOval(
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
             const SizedBox(height: 20),
             const Icon(Icons.check_circle_outline, size: 56, color: AppColors.success),
             const SizedBox(height: 16),
