@@ -141,7 +141,7 @@ class _MainScreenState extends State<MainScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.school_outlined, color: AppColors.textSecondary),
-            tooltip: '睡眠健康チェック試験',
+            tooltip: '睡眠知識検定試験',
             onPressed: () {
               Navigator.push(
                 context,

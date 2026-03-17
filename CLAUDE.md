@@ -55,7 +55,7 @@ lib/
 ├── screens/
 │   ├── main_screen.dart          # メイン計測画面
 │   ├── settings_screen.dart      # 設定画面
-│   └── exam_screen.dart          # 睡眠健康チェック試験画面（課金機能 scaffold）
+│   └── exam_screen.dart          # 睡眠知識検定試験画面（課金機能 scaffold）
 └── widgets/
     ├── lux_display.dart          # Lux値表示
     ├── lux_gauge.dart            # 対数スケールゲージ
@@ -134,7 +134,7 @@ t = 露出時間（秒）
 ## 課金機能（将来実装）
 
 ### 概要
-試験画面（睡眠健康チェック試験）への受験資格を買い切り課金で提供予定。
+試験画面（睡眠知識検定試験）への受験資格を買い切り課金で提供予定。
 
 ### 現在の実装状態（scaffold 済み）
 | ファイル | 内容 |

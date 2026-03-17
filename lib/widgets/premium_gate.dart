@@ -25,13 +25,13 @@ class PremiumGateWidget extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              '睡眠健康チェック試験',
+              '睡眠知識検定試験',
               style: AppTextStyles.heading,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             Text(
-              '光と睡眠に関する知識を確認する試験です。\n受験には受験資格の購入が必要です。',
+              '光と睡眠に関する知識を確認する試験です。\n受験には受験資格の購入が必要です。\n合格するとデジタルディプロマ（資格）が発行されます。',
               style: AppTextStyles.body,
               textAlign: TextAlign.center,
             ),
@@ -54,12 +54,6 @@ class PremiumGateWidget extends StatelessWidget {
                 '受験資格を購入する',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              '※ 購入後は何度でも受験できます',
-              style: AppTextStyles.disclaimer,
-              textAlign: TextAlign.center,
             ),
           ],
         ),
